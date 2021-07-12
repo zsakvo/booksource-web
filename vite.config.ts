@@ -14,6 +14,15 @@ export default defineConfig({
       '@': pathResolve('src')
     }
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://api.shuyuansy.xyz',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  },
   plugins: [
     vue(),
     styleImport({

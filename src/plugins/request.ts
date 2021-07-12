@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import qs from 'qs'
+import { Toast } from 'vant'
 
 const status = (status: number) => {
   let msg = ''
@@ -100,8 +101,6 @@ service.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     popPending(config)
     pushPending(config)
-    let token = localStorage.getItem('token')
-    if (token) config.headers.Authorization = String(token)
     return config
   },
   (err) => {
@@ -113,8 +112,7 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (res: AxiosResponse) => {
     popPending(res)
-    res.data = res.data + '23333'
-    return res
+    return res.data
   },
   (err) => {
     if (axios.isCancel(err)) {
@@ -126,5 +124,11 @@ service.interceptors.response.use(
     return Promise.reject(err)
   }
 )
+
+export const get = (url: string, params = {}) => {
+  return service.get(url, {
+    params
+  })
+}
 
 export default service
