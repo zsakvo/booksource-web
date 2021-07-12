@@ -14,6 +14,7 @@
             :key="item.id"
             :title="item.name"
             :value="item.url"
+            @click="toDetail(item.id)"
             clickable
           >
           </van-cell>
@@ -24,9 +25,10 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, onMounted, reactive, ref } from '@vue/runtime-core'
+  import { defineComponent, onMounted, reactive } from '@vue/runtime-core'
   import { NavBar, PullRefresh, CellGroup, Cell, List } from 'vant'
   import { repoList } from '@/api/index'
+  import { useRouter } from 'vue-router'
 
   export default defineComponent({
     components: {
@@ -37,6 +39,7 @@
       [List.name]: List
     },
     setup() {
+      const router = useRouter()
       const state = reactive({
         page: 0,
         refreshing: false,
@@ -64,7 +67,15 @@
           state.loading = false
         })
       }
-      return { state, onRefresh, onLoad }
+      const toDetail = (id: any) => {
+        router.push({
+          name: 'Info',
+          query: {
+            id
+          }
+        })
+      }
+      return { state, onRefresh, onLoad, toDetail }
     }
   })
 </script>
