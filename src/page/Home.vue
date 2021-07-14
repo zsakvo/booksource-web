@@ -118,8 +118,8 @@
         batchImport(arr)
           .then((res) => {
             console.log('-->', '安装结果', res)
-            Toast.clear()
             state.selectedId = new Set()
+            Toast.clear()
           })
           .catch((err) => {})
       }
