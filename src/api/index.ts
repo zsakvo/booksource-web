@@ -25,3 +25,16 @@ export const repoInfo = (id: any) => {
     }
   })
 }
+
+/**
+ * 书源批量导出
+ * @param {any} ids - 书源 id 集合
+ * @returns
+ */
+export const batchImport = (ids: string) => {
+  return get('/repo/batchimport', {
+    params: {
+      ids
+    }
+  })
+}

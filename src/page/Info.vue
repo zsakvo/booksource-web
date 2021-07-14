@@ -97,14 +97,13 @@
       margin: 14px;
       border-radius: 8px;
       box-sizing: border-box;
-      padding: 0 8px;
+      padding: 14px;
+      padding-bottom: 10px;
       .card-title {
         color: var(--van-gray-8);
-        border-bottom: 1px solid var(--van-gray-1);
-        padding-bottom: 8px;
-        padding-top: 8px;
         font-size: 14px;
         font-weight: bold;
+        margin-top: 4px;
       }
       .card-body {
         padding: 8px 0;
@@ -116,7 +115,7 @@
         }
       }
       .card-buttons {
-        padding: 8px 0;
+        padding-top: 10px;
         font-size: 12px;
         .button {
           padding: 3px 0;
@@ -132,12 +131,10 @@
       border-radius: 8px;
       box-sizing: border-box;
       width: calc(100vw - 28px);
-      padding: 0 8px;
+      padding: 14px;
       .card-title {
+        margin: 4px 0;
         color: var(--van-gray-8);
-        border-bottom: 1px solid var(--van-gray-1);
-        padding-bottom: 8px;
-        padding-top: 8px;
         font-size: 14px;
         font-weight: bold;
         background: #fff;
