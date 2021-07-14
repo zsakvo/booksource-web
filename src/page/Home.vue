@@ -71,7 +71,7 @@
         refreshing: false,
         loading: true,
         finished: false,
-        source: [] as object[],
+        source: [] as any[],
         selectedId: new Set()
       })
       onMounted(() => {
