@@ -34,7 +34,7 @@
               </div>
               <div class="buttons-wrapper">
                 <div class="button orange" @click.stop="toDetail(item.id)"> 详情 </div>
-                <div class="button blue"> 安装 </div>
+                <div class="button blue" @click.stop="toInstall(item.id)"> 安装 </div>
               </div>
             </div>
             <div class="body-wrapper">
@@ -103,6 +103,11 @@
           }
         })
       }
+      const toInstall = (id: any) => {
+        window.open(
+          'deepink://reader/booksource?url=http://api.shuyuansy.xyz/repo/batchimport?ids=' + id
+        )
+      }
       const selectCard = (id: any) => {
         state.selectedId.has(id) ? state.selectedId.delete(id) : state.selectedId.add(id)
       }
@@ -111,19 +116,22 @@
       }
       const installAll = () => {
         let arr = Array.from(state.selectedId).join(',')
-        Toast.loading({
-          message: '请求中……',
-          forbidClick: true
-        })
-        batchImport(arr)
-          .then((res) => {
-            console.log('-->', '安装结果', res)
-            state.selectedId = new Set()
-            Toast.clear()
-          })
-          .catch((err) => {})
+        window.open(
+          'deepink://reader/booksource?url=http://api.shuyuansy.xyz/repo/batchimport?ids=' + arr
+        )
+        // Toast.loading({
+        //   message: '请求中……',
+        //   forbidClick: true
+        // })
+        // batchImport(arr)
+        //   .then((res) => {
+        //     console.log('-->', '安装结果', res)
+        //     state.selectedId = new Set()
+        //     Toast.clear()
+        //   })
+        //   .catch((err) => {})
       }
-      return { state, onRefresh, onLoad, selectCard, toDetail, emptySet, installAll }
+      return { state, onRefresh, onLoad, selectCard, toDetail, emptySet, toInstall, installAll }
     }
   })
 </script>

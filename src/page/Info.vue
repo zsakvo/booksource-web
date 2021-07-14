@@ -14,7 +14,7 @@
         <div class="desc-line">更新时间：{{ state.src.updateTime }}</div>
       </div>
       <div class="card-buttons">
-        <div class="button button-install"> 安装书源 </div>
+        <div class="button button-install" @click="toInstall(state.src.id)"> 安装书源 </div>
       </div>
     </div>
     <div class="content-card" v-if="!state.loading">
@@ -77,7 +77,12 @@
       const onClickLeft = () => {
         router.go(-1)
       }
-      return { state, onClickLeft }
+      const toInstall = (id: any) => {
+        window.open(
+          'deepink://reader/booksource?url=http://api.shuyuansy.xyz/repo/batchimport?ids=' + id
+        )
+      }
+      return { state, onClickLeft, toInstall }
     }
   })
 </script>
