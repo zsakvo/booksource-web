@@ -18,6 +18,7 @@
       "@/assets/*": ["assets/*"],
       "@/router/*": ["router/*"],
       "@/plugins/*": ["plugins/*"],
+      "@/interface/*": ["interface/*"],
       "@/components/*": ["components/*"]
     }
   },

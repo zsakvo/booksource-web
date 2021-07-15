@@ -34,16 +34,7 @@
   import { NavBar, Loading } from 'vant'
   import { repoInfo } from '@/api/index'
   import { useRoute, useRouter } from 'vue-router'
-
-  interface src {
-    content: string
-    createTime: string
-    id: number
-    name: string
-    shareUsername: string
-    updateTime: string
-    url: string
-  }
+  import { SrcInfo } from '@/interface'
 
   export default defineComponent({
     components: {
@@ -55,7 +46,7 @@
       const router = useRouter()
       const bjs = beautify.js
       const state = reactive({
-        src: {} as src,
+        src: {} as SrcInfo,
         content: {},
         loading: true
       })
@@ -77,7 +68,7 @@
       const onClickLeft = () => {
         router.go(-1)
       }
-      const toInstall = (id: any) => {
+      const toInstall = (id: number) => {
         window.open(
           'deepink://reader/booksource?url=http://api.shuyuansy.xyz/repo/batchimport?ids=' + id
         )

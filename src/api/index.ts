@@ -1,4 +1,6 @@
+import { SrcInfo } from '@/interface'
 import get from '@/plugins/request'
+import { AxiosResponse } from 'axios'
 
 /**
  * 获取书源列表
@@ -18,7 +20,7 @@ export const repoList = (page = 1) => {
  * @param {any} id - 书源 id
  * @returns
  */
-export const repoInfo = (id: any) => {
+export const repoInfo = (id: any): Promise<AxiosResponse<SrcInfo>> => {
   return get('/repo/info', {
     params: {
       id

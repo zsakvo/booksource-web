@@ -54,6 +54,7 @@
   import { NavBar, PullRefresh, CellGroup, Cell, List, Toast } from 'vant'
   import { repoList, batchImport } from '@/api/index'
   import { useRouter } from 'vue-router'
+  import { SrcPrev } from '@/interface'
 
   export default defineComponent({
     components: {
@@ -71,7 +72,7 @@
         refreshing: false,
         loading: true,
         finished: false,
-        source: [] as any[],
+        source: [] as SrcPrev[],
         selectedId: new Set()
       })
       onMounted(() => {
@@ -90,12 +91,12 @@
         if (state.refreshing) state.refreshing = false
         state.page++
         repoList(state.page).then((res) => {
-          let list: object[] = Array.from(res as any)
+          let list: SrcPrev[] = Array.from(res as any)
           state.source.push(...list)
           state.loading = false
         })
       }
-      const toDetail = (id: any) => {
+      const toDetail = (id: number) => {
         router.push({
           name: 'Info',
           query: {
@@ -103,12 +104,12 @@
           }
         })
       }
-      const toInstall = (id: any) => {
+      const toInstall = (id: number) => {
         window.open(
           'deepink://reader/booksource?url=http://api.shuyuansy.xyz/repo/batchimport?ids=' + id
         )
       }
-      const selectCard = (id: any) => {
+      const selectCard = (id: number) => {
         state.selectedId.has(id) ? state.selectedId.delete(id) : state.selectedId.add(id)
       }
       const emptySet = () => {
