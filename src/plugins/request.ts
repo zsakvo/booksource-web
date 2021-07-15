@@ -84,7 +84,7 @@ export const clearPending = () => {
 }
 
 const service = axios.create({
-  baseURL: '/api',
+  baseURL: String(import.meta.env.VITE_BASE_URL),
   headers: {
     get: {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
