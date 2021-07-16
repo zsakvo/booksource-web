@@ -105,9 +105,8 @@
         })
       }
       const toInstall = (id: number) => {
-        window.open(
+        window.location.href =
           'deepink://reader/booksource?url=http://api.shuyuansy.xyz/repo/batchimport?ids=' + id
-        )
       }
       const selectCard = (id: number) => {
         state.selectedId.has(id) ? state.selectedId.delete(id) : state.selectedId.add(id)
@@ -117,9 +116,8 @@
       }
       const installAll = () => {
         let arr = Array.from(state.selectedId).join(',')
-        window.open(
+        window.location.href =
           'deepink://reader/booksource?url=http://api.shuyuansy.xyz/repo/batchimport?ids=' + arr
-        )
         // Toast.loading({
         //   message: '请求中……',
         //   forbidClick: true

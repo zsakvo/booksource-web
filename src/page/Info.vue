@@ -69,9 +69,8 @@
         router.go(-1)
       }
       const toInstall = (id: number) => {
-        window.open(
+        window.location.href =
           'deepink://reader/booksource?url=http://api.shuyuansy.xyz/repo/batchimport?ids=' + id
-        )
       }
       return { state, onClickLeft, toInstall }
     }
