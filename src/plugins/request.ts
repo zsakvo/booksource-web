@@ -93,7 +93,7 @@ const service = axios.create({
       'Content-Type': 'application/json;charset=utf-8'
     }
   },
-  withCredentials: true,
+  withCredentials: false,
   timeout: 30000
 })
 
